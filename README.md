@@ -1,24 +1,23 @@
-
 # 🥦 Smart Recipe Finder
 
-**Smart Recipe Finder** est une application intelligente de recommandation culinaire basée sur **l'IA générative**, la **recherche vectorielle** et les **bases de données NoSQL et graphes**[cite: 22, 24, 25, 26].
+**Smart Recipe Finder** est une application intelligente de recommandation culinaire basée sur **l'IA générative**, la **recherche vectorielle** et les **bases de données NoSQL et graphes**.
 
-L'application permet aux utilisateurs d'obtenir des suggestions de recettes personnalisées à partir de requêtes formulées en langage naturel, par exemple[cite: 15, 18] :
+L'application permet aux utilisateurs d'obtenir des suggestions de recettes personnalisées à partir de requêtes formulées en langage naturel, par exemple :
 
-- 🥕 Ingrédients disponibles[cite: 18]
-- 🍽️ Type de plat recherché[cite: 18]
-- 🥗 Régime alimentaire[cite: 18]
-- 🌱 Préférences nutritionnelles[cite: 18]
-- ⏱️ Temps de préparation
-- 💡 Envie ou contexte particulier[cite: 18]
+* 🥕 Ingrédients disponibles
+* 🍽️ Type de plat recherché
+* 🥗 Régime alimentaire
+* 🌱 Préférences nutritionnelles
+* ⏱️ Temps de préparation
+* 💡 Envie ou contexte particulier
 
-Le système combine une architecture **client-serveur**, un pipeline **RAG (Retrieval-Augmented Generation)**, la recherche sémantique et l'IA générative afin de fournir des recommandations pertinentes et contextualisées[cite: 15, 23, 24].
+Le système combine une architecture **client-serveur**, un pipeline **RAG (Retrieval-Augmented Generation)**, la recherche sémantique et l'IA générative afin de fournir des recommandations pertinentes et contextualisées.
 
 ---
 
-## 🏗️️ Architecture du Système
+## 🏗️ Architecture du Système
 
-L'application repose sur une architecture modulaire composée d'un frontend Streamlit, d'un backend Flask et de plusieurs composants de données et d'intelligence artificielle[cite: 23, 26].
+L'application repose sur une architecture modulaire composée d'un frontend Streamlit, d'un backend Flask et de plusieurs composants de données et d'intelligence artificielle.
 
 ```text
                           ┌──────────────────────┐
@@ -37,29 +36,28 @@ L'application repose sur une architecture modulaire composée d'un frontend Stre
                           │      Port : 5000     │
                           └──────────┬───────────┘
                                      │
-              ┌─────────────────────┼─────────────────────┐
-              │                     │                     │
-              ▼                     ▼                     ▼
-      ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
-      │   ChromaDB    │     │    MongoDB    │     │     Neo4j     │
-      │ Recherche     │     │ Stockage des  │     │ Graphe des    │
-      │ vectorielle   │     │   recettes    │     │ relations     │
-      └───────┬───────┘     └───────────────┘     └───────┬───────┘
-              │                                           │
-              ▼                                           ▼
-      ┌───────────────────┐                       ┌──────────────────┐
-      │ Sentence          │                       │ Requêtes Cypher │
-      │ Transformers      │                       │ & relations      │
-      │ Embeddings        │                       │ culinaires       │
-      └─────────┬─────────┘                       └──────────────────┘
-                │
-                ▼
-      ┌─────────────────────────┐
-      │      Google GenAI       │
-      │ Génération & synthèse   │
-      │ des recommandations     │
-      └─────────────────────────┘
-
+               ┌─────────────────────┼─────────────────────┐
+               │                     │                     │
+               ▼                     ▼                     ▼
+       ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
+       │   ChromaDB    │     │    MongoDB    │     │     Neo4j     │
+       │ Recherche     │     │ Stockage des  │     │ Graphe des    │
+       │ vectorielle   │     │   recettes    │     │ relations     │
+       └───────┬───────┘     └───────────────┘     └───────┬───────┘
+               │                                           │
+               ▼                                           ▼
+       ┌───────────────────┐                       ┌──────────────────┐
+       │ Sentence          │                       │ Requêtes Cypher │
+       │ Transformers      │                       │ & relations     │
+       │ Embeddings        │                       │ culinaires      │
+       └─────────┬─────────┘                       └──────────────────┘
+                 │
+                 ▼
+       ┌─────────────────────────┐
+       │      Google GenAI       │
+       │ Génération & synthèse   │
+       │ des recommandations     │
+       └─────────────────────────┘
 ```
 
 ---
@@ -73,26 +71,12 @@ L'interface utilisateur est développée avec **Streamlit**.
 Elle permet notamment :
 
 * La saisie de requêtes en langage naturel
-
-
 * L'affichage des recettes recommandées
-
-
 * L'affichage des ingrédients
-
-
 * L'affichage des étapes de préparation
-
-
 * L'affichage d'informations contextuelles
-
-
 * La présentation dynamique des résultats
-
-
 * L'accès à des liens vers des tutoriels vidéo
-
-
 
 ---
 
@@ -101,32 +85,14 @@ Elle permet notamment :
 Le backend est développé avec **Flask** et expose une API permettant de :
 
 * Recevoir les requêtes utilisateur
-
-
 * Traiter et préparer les requêtes
-
-
 * Générer les embeddings
-
-
 * Effectuer les recherches sémantiques
-
-
 * Interroger MongoDB
-
-
 * Interroger Neo4j
-
-
 * Orchestrer le pipeline RAG
-
-
 * Appeler le modèle Google GenAI
-
-
 * Retourner les recommandations au frontend
-
-
 
 ---
 
@@ -139,20 +105,10 @@ MongoDB est utilisé comme base de données NoSQL principale pour stocker les re
 Le système contient plus de **20 000 recettes** avec différentes informations :
 
 * Titre
-
-
 * Ingrédients
-
-
 * Étapes de préparation
-
-
 * Informations complémentaires
-
-
 * Métadonnées culinaires
-
-
 
 MongoDB constitue la source principale des données utilisées lors de la recherche et de la recommandation.
 
@@ -183,7 +139,6 @@ Recherche par similarité
         │
         ▼
 Recettes pertinentes
-
 ```
 
 ---
@@ -207,14 +162,12 @@ Exemple :
    ┌─────────┐   ┌─────────┐   ┌─────────┐
    │ Semoule │   │ Carotte │   │ Courgette│
    └─────────┘   └─────────┘   └─────────┘
-
 ```
 
 Les relations principales sont basées notamment sur :
 
 ```text
 (:Recipe)-[:HAS_INGREDIENT]->(:Ingredient)
-
 ```
 
 Cette représentation permet d'exploiter les relations entre les recettes et les ingrédients.
@@ -240,7 +193,6 @@ Exemple :
                 │
                 ▼
              ChromaDB
-
 ```
 
 Cela permet de réaliser une recherche basée sur le **sens de la requête** et non uniquement sur la correspondance exacte des mots.
@@ -254,20 +206,10 @@ Cela permet de réaliser une recherche basée sur le **sens de la requête** et 
 Le modèle permet notamment de :
 
 * Générer des recommandations personnalisées
-
-
 * Expliquer les résultats
-
-
 * Fournir des conseils contextuels
-
-
 * Générer des informations nutritionnelles
-
-
 * Formuler une réponse naturelle à l'utilisateur
-
-
 
 Le modèle intervient après la récupération des informations pertinentes afin de produire une réponse contextualisée.
 
@@ -302,34 +244,25 @@ ChromaDB
     └──────────────► Neo4j
                          │
                          ▼
-                    Informations
-                    contextuelles
+                     Informations
+                     contextuelles
                          │
                          ▼
-                    Google GenAI
+                     Google GenAI
                          │
                          ▼
-                Réponse personnalisée
+                  Réponse personnalisée
                          │
                          ▼
-                    Streamlit UI
-
+                     Streamlit UI
 ```
 
 Cette architecture permet de combiner :
 
 * La recherche sémantique
-
-
 * Les données structurées
-
-
 * Les relations du graphe
-
-
 * L'intelligence artificielle générative
-
-
 
 ---
 
@@ -356,7 +289,6 @@ smart-recipe-finder/
 │
 ├── .gitignore
 └── README.md
-
 ```
 
 ---
@@ -368,28 +300,21 @@ smart-recipe-finder/
 Avant de commencer, assurez-vous d'avoir installé :
 
 * **Python 3.8 ou supérieur**
-
 * **MongoDB**
-
 * **Neo4j**
-
 * Une **clé API Google GenAI**
-
 * **Git**
-
 
 Vérifiez votre version de Python :
 
 ```bash
 python --version
-
 ```
 
 Vérifiez votre installation Git :
 
 ```bash
 git --version
-
 ```
 
 ---
@@ -399,15 +324,13 @@ git --version
 Clonez le dépôt GitHub :
 
 ```bash
-git clone [https://github.com/walidlabied09/smart-recipe-finder.git](https://github.com/walidlabied09/smart-recipe-finder.git)
-
+git clone https://github.com/walidlabied09/smart-recipe-finder.git
 ```
 
 Accédez au projet :
 
 ```bash
 cd smart-recipe-finder
-
 ```
 
 ---
@@ -418,28 +341,24 @@ cd smart-recipe-finder
 
 ```bash
 python -m venv env
-
 ```
 
 Activez ensuite l'environnement :
 
 ```bash
 .\env\Scripts\activate
-
 ```
 
 #### Linux / macOS
 
 ```bash
 python3 -m venv env
-
 ```
 
 Activez ensuite l'environnement :
 
 ```bash
 source env/bin/activate
-
 ```
 
 Lorsque l'environnement est activé, vous devriez voir `(env)` au début de votre terminal.
@@ -452,7 +371,6 @@ Accédez au dossier backend :
 
 ```bash
 cd backend
-
 ```
 
 Installez les dépendances :
@@ -460,7 +378,6 @@ Installez les dépendances :
 ```bash
 pip install -r requirements.txt
 pip install streamlit
-
 ```
 
 ---
@@ -481,7 +398,6 @@ smart-recipe-finder/
 │   └── ...
 │
 └── frontend/
-
 ```
 
 Ajoutez les variables suivantes :
@@ -493,7 +409,6 @@ PALM_API_KEY=votre_cle_api_google_genai
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=votre_mot_de_passe
-
 ```
 
 > ⚠️ Ne partagez jamais votre clé API ou votre mot de passe Neo4j publiquement.
@@ -508,26 +423,15 @@ Depuis le dossier `backend/` :
 
 ```bash
 python preprocess.py
-
 ```
 
 Cette étape permet notamment de :
 
 * Charger les données
-
-
 * Préparer les recettes
-
-
 * Générer les embeddings
-
-
 * Construire l'index vectoriel
-
-
 * Préparer les données nécessaires à la recherche
-
-
 
 ---
 
@@ -537,14 +441,12 @@ Depuis le dossier `backend/` :
 
 ```bash
 python app.py
-
 ```
 
 Le serveur Flask démarre sur :
 
 ```text
-[http://127.0.0.1:5000](http://127.0.0.1:5000)
-
+http://127.0.0.1:5000
 ```
 
 ---
@@ -557,28 +459,24 @@ Retournez à la racine du projet :
 
 ```bash
 cd smart-recipe-finder
-
 ```
 
 Accédez au frontend :
 
 ```bash
 cd frontend
-
 ```
 
 Lancez Streamlit :
 
 ```bash
 streamlit run app.py
-
 ```
 
 L'interface est accessible sur :
 
 ```text
 http://localhost:8501
-
 ```
 
 ---
@@ -595,7 +493,6 @@ cd smart-recipe-finder
 cd backend
 python preprocess.py
 python app.py
-
 ```
 
 ### Terminal 2 — Frontend
@@ -605,7 +502,6 @@ cd smart-recipe-finder
 .\env\Scripts\activate
 cd frontend
 streamlit run app.py
-
 ```
 
 ---
@@ -616,123 +512,59 @@ L'utilisateur peut saisir une requête naturelle telle que :
 
 ```text
 Je cherche une recette avec du poulet, du riz et des légumes.
-
 ```
 
 Ou :
 
 ```text
 Je veux une recette végétarienne rapide avec des tomates et des pâtes.
-
 ```
 
 Le système va :
 
 1. Analyser la requête.
-
-
 2. Générer un embedding.
-
-
 3. Rechercher les recettes similaires dans ChromaDB.
-
-
 4. Récupérer les informations détaillées depuis MongoDB.
-
-
 5. Exploiter les relations disponibles dans Neo4j.
-
-
 6. Fournir le contexte au modèle Google GenAI.
-
-
 7. Générer une réponse personnalisée.
-
-
 8. Afficher le résultat dans l'interface Streamlit.
-
-
 
 ---
 
 ## 🧱 Technologies utilisées
 
-| Technologie | Utilisation |
-| --- | --- |
-| 🐍 Python | Langage principal
-
- |
-| 🌐 Flask | Backend / API REST
-
- |
-| 🎨 Streamlit | Interface utilisateur
-
- |
-| 🍃 MongoDB | Stockage des recettes
-
- |
-| 🔎 ChromaDB | Recherche vectorielle
-
- |
-| 🕸️ Neo4j | Graphe de connaissances
-
- |
-| 🤖 Google GenAI | IA générative
-
- |
-| 🧠 Sentence Transformers | Génération des embeddings
-
- |
-| 🔗 Cypher | Requêtes Neo4j
-
- |
-| 📦 Git / GitHub | Gestion du code source
-
- |
+| Technologie              | Utilisation               |
+| ------------------------ | ------------------------- |
+| 🐍 Python                | Langage principal         |
+| 🌐 Flask                 | Backend / API REST        |
+| 🎨 Streamlit             | Interface utilisateur     |
+| 🍃 MongoDB               | Stockage des recettes     |
+| 🔎 ChromaDB              | Recherche vectorielle     |
+| 🕸️ Neo4j                | Graphe de connaissances   |
+| 🤖 Google GenAI          | IA générative             |
+| 🧠 Sentence Transformers | Génération des embeddings |
+| 🔗 Cypher                | Requêtes Neo4j            |
+| 📦 Git / GitHub          | Gestion du code source    |
 
 ---
 
 ## 📊 Fonctionnalités principales
 
 * ✅ Recherche de recettes en langage naturel
-
-
 * ✅ Recherche sémantique
-
-
 * ✅ Recommandations personnalisées
-
-
 * ✅ Recherche vectorielle avec ChromaDB
-
-
 * ✅ Stockage des recettes avec MongoDB
-
-
 * ✅ Graphe de connaissances avec Neo4j
-
-
 * ✅ Génération d'embeddings avec Sentence Transformers
-
-
 * ✅ Génération de réponses avec Google GenAI
-
-
 * ✅ Architecture RAG
-
-
 * ✅ Interface interactive avec Streamlit
-
-
 * ✅ API backend avec Flask
-
-
 * ✅ Possibilité d'afficher des tutoriels vidéo
-
-
 * ✅ Conseils nutritionnels contextualisés
-
-
 
 ---
 
@@ -745,7 +577,6 @@ Exemple :
 ```env
 PALM_API_KEY=votre_cle_api
 NEO4J_PASSWORD=votre_mot_de_passe
-
 ```
 
 Le fichier `.env` doit être ignoré par Git grâce au fichier `.gitignore`.
@@ -758,7 +589,6 @@ Le rapport technique du projet est disponible dans le dossier :
 
 ```text
 docs/rapport-technique.pdf
-
 ```
 
 ---
@@ -770,9 +600,7 @@ Projet d'ingénierie réalisé dans le cadre du cycle **Big Data Engineering** �
 ### Encadrement académique
 
 * **M. Hamza Gamouh**
-
 * **M. Hakim Hafidi**
-
 
 ---
 
@@ -781,4 +609,3 @@ Projet d'ingénierie réalisé dans le cadre du cycle **Big Data Engineering** �
 Ce projet a été réalisé dans un cadre académique.
 
 Toute utilisation, modification ou redistribution du projet doit respecter les conditions définies par ses auteurs.
-
